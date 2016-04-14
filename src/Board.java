@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Board {
 
     // declares an array of integers
-    
+
     public static void main(String[] args) {
         new Board();
     }
@@ -43,15 +43,28 @@ public class Board {
     }
 
 
-    public int hammingDist(int distance) {
-        return 0;
+    public int hammingDist(int[][] board, int [][] correct) {
+        int ham = 0;
+
+        for(int i = 0; i < 4; i++) {
+            for(int j = 0; j < 4; j++) {
+                if(board[i][j] != correct[i][j]) {
+                    ham++;
+                }
+            }
+        }
+        return ham;
     }
 
-    public boolean isGoal() {
-
-        //TODO: Implement this
-
-        return false;
+    public boolean isGoal(int[][] a,int[][] b) {
+        for(int i = 0; i < 4; i++) {
+            for(int j = 0; j < 4; j++) {
+                if(a[i][j] != b[i][j]) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     @Override
