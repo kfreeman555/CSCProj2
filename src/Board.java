@@ -3,8 +3,12 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 /**
+ *
  * Created by kadefreeman on 4/10/16.
+ *
  */
+
+
 public class Board {
 
     private final int[][] array;
@@ -132,7 +136,7 @@ public class Board {
 
         ArrayList<Board> neighbors = new ArrayList<>();
 
-        if(emptyRowPos >0) {
+        if(emptyRowPos > 0) {
 
             int[][] copyArray = new int[4][4];
             for (int i = 0; i < 4; i++) {
@@ -148,8 +152,53 @@ public class Board {
             neighbors.add(newNeighbor);
         }
 
-        // other neighbors here
+        if (emptyColPos > 0) {
 
+            int[][] copyArray = new int[4][4];
+            for (int i = 0; i < 4; i++) {
+                for (int j = 0; j < 4; j++) {
+                    copyArray[i][j] = array[i][j];
+                }
+
+                copyArray[emptyRowPos][emptyColPos] = array[emptyRowPos][emptyColPos-1];
+                copyArray[emptyRowPos][emptyColPos-1] = 0;
+
+                Board newNeighbor = new Board(copyArray);
+                neighbors.add(newNeighbor);
+            }
+        }
+
+        if(emptyRowPos >= 0) {
+
+            int[][] copyArray = new int[4][4];
+            for (int i = 0; i < 4; i++) {
+                for (int j = 0; j < 4; j++) {
+                    copyArray[i][j] = array[i][j];
+                }
+            }
+
+            copyArray[emptyRowPos][emptyColPos] = array[emptyRowPos+1][emptyColPos];
+            copyArray[emptyRowPos+1][emptyColPos] = 0;
+
+            Board newNeighbor = new Board(copyArray);
+            neighbors.add(newNeighbor);
+        }
+
+        if(emptyRowPos <= 0) {
+
+            int[][] copyArray = new int[4][4];
+            for (int i = 0; i < 4; i++) {
+                for (int j = 0; j < 4; j++) {
+                    copyArray[i][j] = array[i][j];
+                }
+            }
+
+            copyArray[emptyRowPos][emptyColPos] = array[emptyRowPos][emptyColPos+1];
+            copyArray[emptyRowPos][emptyColPos+1] = 0;
+
+            Board newNeighbor = new Board(copyArray);
+            neighbors.add(newNeighbor);
+        }
 
         Board[] neighborsArray = new Board[neighbors.size()];
         neighbors.toArray(neighborsArray);
