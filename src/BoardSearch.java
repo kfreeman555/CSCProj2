@@ -7,9 +7,10 @@ public class BoardSearch implements Comparable<BoardSearch> {
     int distSoFar;
     final int estDist; //estimate of the number of moves required to solve board
 
-    public BoardSearch(Board b, int eD) {
+    public BoardSearch(Board b, int distSoFar) {
         this.board = b;
-        this.estDist = eD;
+        this.distSoFar = distSoFar;
+        this.estDist = distSoFar+board.hammingDist();
     }
 
 
