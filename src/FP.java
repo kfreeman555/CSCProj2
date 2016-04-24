@@ -9,8 +9,9 @@ public class FP {
 
     public static void main(String[] args) {
         Board startingBoard = Board.startBoard();
+        Board finalBoard = Board.finalBoard();
         BoardSearch startingBoardSearch = new BoardSearch(startingBoard,0);
-
+        BoardSearch finalBoardSearch = new BoardSearch(finalBoard,0);
 
         PriorityQueue<BoardSearch> boardQueue = new PriorityQueue<>();
         Hashtable<Board,Board> childParent = new Hashtable<>();
@@ -21,14 +22,22 @@ public class FP {
         while(!boardQueue.isEmpty()) {
 
             // dequeue a board search
+            BoardSearch dequeueSearch = boardQueue.peek();
+            Board dequeue = dequeueSearch.board;
 
             // check to see if board contained inside is the solution
+            if (dequeue == finalBoard) {
+                break;
+            }
 
             // get the neighbors of the board in the board search
+            Board[] neighborsArray = dequeue.getNeighbors();
 
             // put them in their own boardsearch's with a distSoFar one higher
+            BoardSearch neighborSearch = new BoardSearch();
 
-            // add them to the Prioritry queue
+
+            // add them to the Priority queue
 
         }
 
