@@ -59,6 +59,8 @@ public class Board {
     }
 
     public static Board finalBoard() {
+        //Creates a finalBoard, the solution to the fifteen puzzle, where 0 represents the blank space
+
         int[][] b = new int[3][3];
 
         b[0][0] = 1;
@@ -131,8 +133,6 @@ public class Board {
     }
 
     public Board[] getNeighbors() {
-
-        //TODO: Implement this
 
         ArrayList<Board> neighbors = new ArrayList<>();
 
