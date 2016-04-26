@@ -61,7 +61,7 @@ public class Board {
     public static Board finalBoard() {
         //Creates a finalBoard, the solution to the fifteen puzzle, where 0 represents the blank space
 
-        int[][] b = new int[3][3];
+        int[][] b = new int[4][4];
 
         b[0][0] = 1;
         b[0][1] = 2;
@@ -173,7 +173,7 @@ public class Board {
             int[][] copyArray = new int[4][4];
             for (int i = 0; i < 4; i++) {
                 for (int j = 0; j < 4; j++) {
-                    copyArray[i][j] = array[i][j];
+                    copyArrArray[i][j] = array[i][j];
                 }
             }
 
