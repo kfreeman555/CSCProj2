@@ -20,7 +20,7 @@ public class Board {
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
                 if (array[i][j] == 0) {
-                    findEmptyX   = i;
+                    findEmptyX = i;
                     findEmptyY = j;
                 }
             }
@@ -139,11 +139,7 @@ public class Board {
         if(emptyRowPos > 0) {
 
             int[][] copyArray = new int[4][4];
-            for (int i = 0; i < 4; i++) {
-                for (int j = 0; j < 4; j++) {
-                    copyArray[i][j] = array[i][j];
-                }
-            }
+            System.arraycopy(array, 0, copyArray, 0, array.length);
 
             copyArray[emptyRowPos][emptyColPos] = array[emptyRowPos-1][emptyColPos];
             copyArray[emptyRowPos-1][emptyColPos] = 0;
@@ -155,27 +151,19 @@ public class Board {
         if (emptyColPos > 0) {
 
             int[][] copyArray = new int[4][4];
-            for (int i = 0; i < 4; i++) {
-                for (int j = 0; j < 4; j++) {
-                    copyArray[i][j] = array[i][j];
-                }
+            System.arraycopy(array, 0, copyArray, 0, array.length);
 
-                copyArray[emptyRowPos][emptyColPos] = array[emptyRowPos][emptyColPos-1];
-                copyArray[emptyRowPos][emptyColPos-1] = 0;
+            copyArray[emptyRowPos][emptyColPos] = array[emptyRowPos][emptyColPos-1];
+            copyArray[emptyRowPos][emptyColPos-1] = 0;
 
-                Board newNeighbor = new Board(copyArray);
-                neighbors.add(newNeighbor);
-            }
+            Board newNeighbor = new Board(copyArray);
+            neighbors.add(newNeighbor);
         }
 
-        if(emptyRowPos >= 0) {
+        if(emptyRowPos < 3) {
 
             int[][] copyArray = new int[4][4];
-            for (int i = 0; i < 4; i++) {
-                for (int j = 0; j < 4; j++) {
-                    copyArrArray[i][j] = array[i][j];
-                }
-            }
+            System.arraycopy(array, 0, copyArray, 0, array.length);
 
             copyArray[emptyRowPos][emptyColPos] = array[emptyRowPos+1][emptyColPos];
             copyArray[emptyRowPos+1][emptyColPos] = 0;
@@ -184,14 +172,10 @@ public class Board {
             neighbors.add(newNeighbor);
         }
 
-        if(emptyRowPos <= 0) {
+        if(emptyColPos < 3) {
 
             int[][] copyArray = new int[4][4];
-            for (int i = 0; i < 4; i++) {
-                for (int j = 0; j < 4; j++) {
-                    copyArray[i][j] = array[i][j];
-                }
-            }
+            System.arraycopy(array, 0, copyArray, 0, array.length);
 
             copyArray[emptyRowPos][emptyColPos] = array[emptyRowPos][emptyColPos+1];
             copyArray[emptyRowPos][emptyColPos+1] = 0;
@@ -202,6 +186,7 @@ public class Board {
 
         Board[] neighborsArray = new Board[neighbors.size()];
         neighbors.toArray(neighborsArray);
+        System.out.println(neighborsArray);
         return neighborsArray;
 
     }

@@ -25,7 +25,7 @@ public class FP {
         boardQueue.add(startingBoardSearch); //adds startingBoardSearch to boardQueue
 
         Board current;
-        Board[] neighborsArray = new Board[4];
+        Board[] neighborsArray;
 
         while (!boardQueue.isEmpty()) {  //while boardQueue is not empty
 
